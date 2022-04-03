@@ -1,15 +1,14 @@
-# Flask
-1. 初始化数据迁移的目录
-python manage.py db init
-​
-2. 数据库的数据迁移版本初始化
-python manage.py db migrate -m 'initial migration'
-​
-3. 升级版本[创建表]
-python manage.py db upgrade 
-​
-4. 降级版本[删除表]
-python manage.py db downgrade
-​
-5. 运行程序
-python manage.py start
+# FlaskProject
+
+初始化数据库 python manage.py db init
+
+提交数据库修改 python manage.py db migrate
+
+升级数据库 python manage.py db upgrade
+
+降级数据库 python manage.py db downgrade
+
+本地服务启动命令 python manage.py start
+
+服务器部署服务启动命令 进入项目目录，执行uwsgi --ini uwsgi.ini
+

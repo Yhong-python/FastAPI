@@ -1,0 +1,9 @@
+**/.pytest_cache/
+.idea/
+**/__pycache__/
+**/*.pyc
+**/.DS_Store
+**/venv/
+**/migrations/
+**/logs/
+

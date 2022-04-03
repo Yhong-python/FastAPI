@@ -5,23 +5,31 @@ Created on 2022/3/7 17:12
 __author__= yangh
 __remark__=
 """
+import pytz
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
+from apscheduler.executors.pool import ThreadPoolExecutor
+
 
 class Config():
     """项目配置核心类"""
-    # 调试模式
     DEBUG = False
-    # 配置日志
     LOG_LEVEL = "DEBUG"
-
-    # mysql数据库的配置信息
-    # SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@127.0.0.1:3306/students?charset=utf8"
-    # 动态追踪修改设置，如未设置只会提示警告
+    # SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@127.0.0.1:3306/dbtools?charset=utf8"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # 查询时会显示原始SQL语句
-    SQLALCHEMY_ECHO= False
-    # 设置密钥，可以通过 base64.b64encode(os.urandom(48)) 来生成一个指定长度的随机字符串
+    SQLALCHEMY_ECHO = False
     SECRET_KEY = "ghhBljAa0uzw2afLqJOXrukORE4BlkTY/1vaMuDh6opQ3uwGYtsDUyxcH62Aw3ju"
-    # flask_session的配置信息
-    PERMANENT_SESSION_LIFETIME = 24 * 60 * 60 # session 的有效期，单位是秒
+    PERMANENT_SESSION_LIFETIME = 24 * 60 * 60
     CSRF_ENABLED = True
-    JSON_AS_ASCII= False
+    JSON_AS_ASCII = False
+    # 定时任务配置
+    SCHEDULER_JOBSTORES = {
+        'default': SQLAlchemyJobStore(url="mysql+pymysql://root:123456@192.168.110.139:3310/dbtools?charset=utf8")}
+    # 线程池配置，最大5个线程
+    SCHEDULER_EXECUTORS = {'default': ThreadPoolExecutor(5)}
+    # 调度开关开启
+    SCHEDULER_API_ENABLED = True
+    # 设置容错时间为 10分钟
+    SCHEDULER_JOB_DEFAULTS = {'misfire_grace_time': 600}
+    # 配置时区
+    # SCHEDULER_TIMEZONE = 'Asia/Shanghai'
+    SCHEDULER_TIMEZONE=pytz.timezone('Asia/Shanghai')

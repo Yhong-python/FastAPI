@@ -8,10 +8,10 @@ __remark__=
 
 from . import Config
 
+
 class DevelopementConfig(Config):
     """开发模式下的配置"""
-    # 查询时会显示原始SQL语句
-    SQLALCHEMY_ECHO= True
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@127.0.0.1:3306/students?charset=utf8"
-    AUTO_CREATE_TABLE='ON'
-    MYSQL_DB='students'
+    SQLALCHEMY_ECHO = False
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@192.168.110.139:3310/dbtools?charset=utf8"
+    AUTO_CREATE_TABLE = 'ON'
+    MYSQL_DB = 'students'
