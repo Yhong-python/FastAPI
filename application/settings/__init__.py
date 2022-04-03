@@ -23,7 +23,7 @@ class Config():
     JSON_AS_ASCII = False
     # 定时任务配置
     SCHEDULER_JOBSTORES = {
-        'default': SQLAlchemyJobStore(url="mysql+pymysql://root:123456@192.168.110.139:3310/dbtools?charset=utf8")}
+        'default': SQLAlchemyJobStore(url="mysql+pymysql://root:yanghong1994@localhost:3306/dbtools?charset=utf8")}
     # 线程池配置，最大5个线程
     SCHEDULER_EXECUTORS = {'default': ThreadPoolExecutor(5)}
     # 调度开关开启
